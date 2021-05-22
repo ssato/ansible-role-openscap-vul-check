@@ -13,7 +13,7 @@
 
 - name: Do vulnerabilities checks using the scanner with ref. data
   command: >-
-    oscap oval eval {{ sovc_security_reference_data_name }} 
+    oscap oval eval {{ sovc_security_reference_data_name }}
       --report {{ sovc_report_filepath }}
 
 # vim:sw=2:ts=2:et:

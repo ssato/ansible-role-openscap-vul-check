@@ -3,8 +3,8 @@ galaxy_info:
   role_name: openscap_vul_check
   author: Satoru SATOH
   description: |
-    Ansible Role to check vulnerabilities of target nodes using openscap with SCAP
-    content such like security data provided from
+    Ansible Role to check vulnerabilities of target nodes using openscap with
+    SCAP content such like security data provided from
     https://www.redhat.com/security/data/metrics/.
   # company: Red Hat, Inc.
 

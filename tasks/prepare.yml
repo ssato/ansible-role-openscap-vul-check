@@ -14,9 +14,9 @@
   debug:
     var: __result
   when:
-      - sovc_debug
+    - sovc_debug
 
-- name: Fetch 
+- name: Fetch security reference data
   get_url:
     url: "{{ sovc_security_reference_data_url }}"
     dest: "{{ sovc_security_reference_data_name }}"
