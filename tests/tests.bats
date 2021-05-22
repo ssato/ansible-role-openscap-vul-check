@@ -28,11 +28,6 @@ function skip_if_user_is_not_root () {
     check_results
 }
 
-@test "Check styles of all playbook files" {
-    run ansible-lint playbook.yml
-    check_results
-}
-
 @test "Test applying the role" {
     skip_if_user_is_not_root
 
