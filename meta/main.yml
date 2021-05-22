@@ -1,6 +1,6 @@
 ---
 galaxy_info:
-  role_name: openscap-report
+  role_name: openscap_vul_check
   author: Satoru SATOH
   description: |
     Ansible Role to check vulnerabilities of target nodes using openscap with SCAP

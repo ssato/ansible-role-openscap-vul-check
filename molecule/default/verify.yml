@@ -1,0 +1,10 @@
+---
+- name: Verification
+  hosts: all
+  gather_facts: true
+  vars:
+    sovc_verification_mode: true
+  roles:
+    - ssato.openscap_vul_check
+
+# vim:sw=2:ts=2:et:

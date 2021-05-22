@@ -5,6 +5,9 @@
       # sovc_debug:
       - sovc_debug is defined
       - sovc_debug is in [true, false]
+      #
+      - sovc_verification_mode is defined
+      - sovc_verification_mode is in [true, false]
       # sovc_dist_ver
       - sovc_dist_ver is defined
       - sovc_dist_ver is string

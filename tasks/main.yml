@@ -7,6 +7,8 @@
       include_tasks: "prepare.yml"
     - name: Run vul checks
       include_tasks: "run.yml"
+  when:
+    - sovc_verification_mode is false
 
 - block:
     # .. todo::

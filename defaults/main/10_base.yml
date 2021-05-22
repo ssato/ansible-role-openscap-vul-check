@@ -2,6 +2,7 @@
 # .. note:: sovc is an abbreviation of 'ssato.openscap-vul-check'
 
 sovc_debug: true
+sovc_verification_mode: false
 
 sovc_dist_ver: "{{ ansible_distribution_major_version }}"
 
