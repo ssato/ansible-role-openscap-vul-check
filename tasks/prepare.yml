@@ -1,18 +1,35 @@
 ---
+- block:
+    - name: Ensure EPEL package provides openscap scanner command is installed
+      package:
+        name: "{{ sovc_epel_repo_rpm }}"
+        # .. note:: Avoid 'latest' because it may cause change.
+        state: present
+
+    - name: Ensure pandoc is installed
+      package:
+        name: pandoc
+        # .. note:: Avoid 'latest' because it may cause change.
+        state: present
+  when:
+    - sovc_covnert_html_to_md
+
 - name: Ensure package provides openscap scanner command is installed
   package:
     name: "{{ sovc_scan_pkg }}"
     # .. note:: Avoid 'latest' because it may cause change.
     state: present
 
-- name: Ensure the scanner command can run
-  command: >-
-    oscap -V
-  changed_when: false
+- block:
+    - name: Ensure the scanner command can run
+      command: >-
+        oscap -V
+      changed_when: false
+      register: __result
 
-- name: Debug the output of the previous command
-  debug:
-    var: __result
+    - name: Debug the output of the previous command, the scanner could run
+      debug:
+        var: __result
   when:
     - sovc_debug
 
