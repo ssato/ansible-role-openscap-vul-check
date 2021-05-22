@@ -13,7 +13,33 @@
 
 - name: Do vulnerabilities checks using the scanner with ref. data
   command: >-
-    oscap oval eval {{ sovc_security_reference_data_name }}
+    oscap oval eval
       --report {{ sovc_report_filepath }}
+      {{ sovc_security_reference_data_name }}
+  changed_when: false
+
+- name: Fetch the report file
+  fetch:
+    src: "{{ sovc_report_filepath }}"
+    dest: "/tmp"
+
+- block:
+    - name: Set markdown filepath
+      set_fact:
+        __md_filepath: >-
+          {{ sovc_report_md_filepath | replace('.html', '.md') }}
+
+    - name: Convert HTML report output to markdown file
+      command: >-
+        pandoc {{ sovc_security_reference_data_name }}
+          -o {{ sovc_security_reference_data_name | replace('.html', '.md') }}
+
+    - name: Fetch the report file (.md)
+      fetch:
+        src: "{{ __md_filepath }}"
+        dest: "/tmp/{{ inventory_hostname }}/"
+
+  when:
+    - sovc_covnert_html_to_md
 
 # vim:sw=2:ts=2:et:
