@@ -1,0 +1,1128 @@
+ssato@x1-carbon-gen6% ansible-playbook -vv -i inventories/mylab/hosts converge.yml -e "{'sovc_debug': true}"
+ansible-playbook 2.9.21
+  config file = /home/ssato/repos/public/github.com/ssato/ansible-role-openscap-vul-check.git/tests/ansible.cfg
+  configured module search path = ['/home/ssato/.ansible/plugins/modules', '/usr/share/ansible/plugins/modules']
+  ansible python module location = /usr/lib/python3.9/site-packages/ansible
+  executable location = /usr/bin/ansible-playbook
+  python version = 3.9.5 (default, May  4 2021, 00:00:00) [GCC 11.1.1 20210428 (Red Hat 11.1.1-1)]
+Using /home/ssato/repos/public/github.com/ssato/ansible-role-openscap-vul-check.git/tests/ansible.cfg as config file
+Skipping callback 'actionable', as we already have a stdout callback.
+Skipping callback 'counter_enabled', as we already have a stdout callback.
+Skipping callback 'debug', as we already have a stdout callback.
+Skipping callback 'dense', as we already have a stdout callback.
+Skipping callback 'dense', as we already have a stdout callback.
+Skipping callback 'full_skip', as we already have a stdout callback.
+Skipping callback 'json', as we already have a stdout callback.
+Skipping callback 'minimal', as we already have a stdout callback.
+Skipping callback 'null', as we already have a stdout callback.
+Skipping callback 'oneline', as we already have a stdout callback.
+Skipping callback 'selective', as we already have a stdout callback.
+Skipping callback 'skippy', as we already have a stdout callback.
+Skipping callback 'stderr', as we already have a stdout callback.
+Skipping callback 'unixy', as we already have a stdout callback.
+Skipping callback 'yaml', as we already have a stdout callback.
+
+PLAYBOOK: converge.yml ****************************************************************************************************************************************
+1 plays in converge.yml
+
+PLAY [Converge] ***********************************************************************************************************************************************
+
+TASK [Gathering Facts] ****************************************************************************************************************************************
+task path: /home/ssato/repos/public/github.com/ssato/ansible-role-openscap-vul-check.git/tests/converge.yml:2
+ok: [rhel-8-client-1]
+META: ran handlers
+
+TASK [ssato.openscap_vul_check : Run pre checks] **************************************************************************************************************
+task path: /home/ssato/repos/public/github.com/ssato/ansible-role-openscap-vul-check.git/tasks/main.yml:2
+included: /home/ssato/repos/public/github.com/ssato/ansible-role-openscap-vul-check.git/tasks/pre_checks.yml for rhel-8-client-1
+
+TASK [ssato.openscap_vul_check : Test variables are OK] *******************************************************************************************************
+task path: /home/ssato/repos/public/github.com/ssato/ansible-role-openscap-vul-check.git/tasks/pre_checks.yml:2
+ok: [rhel-8-client-1] => {
+    "changed": false
+}
+
+MSG:
+
+All assertions passed
+
+TASK [ssato.openscap_vul_check : Test if the OS running in the target is supported one] ***********************************************************************
+task path: /home/ssato/repos/public/github.com/ssato/ansible-role-openscap-vul-check.git/tasks/pre_checks.yml:47
+ok: [rhel-8-client-1] => {
+    "changed": false
+}
+
+MSG:
+
+All assertions passed
+
+TASK [ssato.openscap_vul_check : Ensure tools and data are ready and preparation has been done] ***************************************************************
+task path: /home/ssato/repos/public/github.com/ssato/ansible-role-openscap-vul-check.git/tasks/main.yml:6
+included: /home/ssato/repos/public/github.com/ssato/ansible-role-openscap-vul-check.git/tasks/prepare.yml for rhel-8-client-1
+
+TASK [ssato.openscap_vul_check : Ensure EPEL package provides openscap scanner command is installed] **********************************************************
+task path: /home/ssato/repos/public/github.com/ssato/ansible-role-openscap-vul-check.git/tasks/prepare.yml:3
+skipping: [rhel-8-client-1] => {
+    "changed": false,
+    "skip_reason": "Conditional result was False"
+}
+
+TASK [ssato.openscap_vul_check : Ensure pandoc is installed] **************************************************************************************************
+task path: /home/ssato/repos/public/github.com/ssato/ansible-role-openscap-vul-check.git/tasks/prepare.yml:9
+skipping: [rhel-8-client-1] => {
+    "changed": false,
+    "skip_reason": "Conditional result was False"
+}
+
+TASK [ssato.openscap_vul_check : Ensure package provides openscap scanner command is installed] ***************************************************************
+task path: /home/ssato/repos/public/github.com/ssato/ansible-role-openscap-vul-check.git/tasks/prepare.yml:17
+ok: [rhel-8-client-1] => {
+    "changed": false,
+    "rc": 0,
+    "results": []
+}
+
+MSG:
+
+Nothing to do
+
+TASK [ssato.openscap_vul_check : Ensure the scanner command can run] ******************************************************************************************
+task path: /home/ssato/repos/public/github.com/ssato/ansible-role-openscap-vul-check.git/tasks/prepare.yml:24
+ok: [rhel-8-client-1] => {
+    "changed": false,
+    "cmd": [
+        "oscap",
+        "-V"
+    ],
+    "delta": "0:00:00.025483",
+    "end": "2021-05-22 23:39:30.377631",
+    "rc": 0,
+    "start": "2021-05-22 23:39:30.352148"
+}
+
+STDOUT:
+
+OpenSCAP command line tool (oscap) 1.3.4
+Copyright 2009--2020 Red Hat Inc., Durham, North Carolina.
+
+==== Supported specifications ====
+XCCDF Version: 1.2
+OVAL Version: 5.11.1
+CPE Version: 2.3
+CVSS Version: 2.0
+CVE Version: 2.0
+Asset Identification Version: 1.1
+Asset Reporting Format Version: 1.1
+CVRF Version: 1.1
+
+==== Capabilities added by auto-loaded plugins ====
+No plugins have been auto-loaded...
+
+==== Paths ====
+Schema files: /usr/share/openscap/schemas
+Default CPE files: /usr/share/openscap/cpe
+
+==== Inbuilt CPE names ====
+Red Hat Enterprise Linux - cpe:/o:redhat:enterprise_linux
+Red Hat Enterprise Linux 5 - cpe:/o:redhat:enterprise_linux:5
+Red Hat Enterprise Linux 6 - cpe:/o:redhat:enterprise_linux:6
+Red Hat Enterprise Linux 7 - cpe:/o:redhat:enterprise_linux:7
+Red Hat Enterprise Linux 8 - cpe:/o:redhat:enterprise_linux:8
+Oracle Linux 5 - cpe:/o:oracle:linux:5
+Oracle Linux 6 - cpe:/o:oracle:linux:6
+Oracle Linux 7 - cpe:/o:oracle:linux:7
+Oracle Linux 8 - cpe:/o:oracle:linux:8
+Community Enterprise Operating System 5 - cpe:/o:centos:centos:5
+Community Enterprise Operating System 6 - cpe:/o:centos:centos:6
+Community Enterprise Operating System 7 - cpe:/o:centos:centos:7
+Scientific Linux 5 - cpe:/o:scientificlinux:scientificlinux:5
+Scientific Linux 6 - cpe:/o:scientificlinux:scientificlinux:6
+Scientific Linux 7 - cpe:/o:scientificlinux:scientificlinux:7
+Fedora 16 - cpe:/o:fedoraproject:fedora:16
+Fedora 17 - cpe:/o:fedoraproject:fedora:17
+Fedora 18 - cpe:/o:fedoraproject:fedora:18
+Fedora 19 - cpe:/o:fedoraproject:fedora:19
+Fedora 20 - cpe:/o:fedoraproject:fedora:20
+Fedora 21 - cpe:/o:fedoraproject:fedora:21
+Fedora 22 - cpe:/o:fedoraproject:fedora:22
+Fedora 23 - cpe:/o:fedoraproject:fedora:23
+Fedora 24 - cpe:/o:fedoraproject:fedora:24
+Fedora 25 - cpe:/o:fedoraproject:fedora:25
+Fedora 26 - cpe:/o:fedoraproject:fedora:26
+Fedora 27 - cpe:/o:fedoraproject:fedora:27
+Fedora 28 - cpe:/o:fedoraproject:fedora:28
+Fedora 29 - cpe:/o:fedoraproject:fedora:29
+Fedora 30 - cpe:/o:fedoraproject:fedora:30
+Fedora 31 - cpe:/o:fedoraproject:fedora:31
+Fedora 32 - cpe:/o:fedoraproject:fedora:32
+Fedora 33 - cpe:/o:fedoraproject:fedora:33
+SUSE Linux Enterprise all versions - cpe:/o:suse:sle
+SUSE Linux Enterprise Server 10 - cpe:/o:suse:sles:10
+SUSE Linux Enterprise Desktop 10 - cpe:/o:suse:sled:10
+SUSE Linux Enterprise Server 11 - cpe:/o:suse:linux_enterprise_server:11
+SUSE Linux Enterprise Desktop 11 - cpe:/o:suse:linux_enterprise_desktop:11
+SUSE Linux Enterprise Server 12 - cpe:/o:suse:sles:12
+SUSE Linux Enterprise Desktop 12 - cpe:/o:suse:sled:12
+openSUSE 11.4 - cpe:/o:opensuse:opensuse:11.4
+openSUSE 13.1 - cpe:/o:opensuse:opensuse:13.1
+openSUSE 13.2 - cpe:/o:opensuse:opensuse:13.2
+openSUSE 42.1 - cpe:/o:novell:leap:42.1
+openSUSE Leap 42.1 - cpe:/o:opensuse:leap:42.1
+openSUSE 42.2 - cpe:/o:novell:leap:42.2
+openSUSE Leap 42.2 - cpe:/o:opensuse:leap:42.2
+openSUSE Leap 42.3 - cpe:/o:opensuse:leap:42.3
+openSUSE Leap 15.0 - cpe:/o:opensuse:leap:15.0
+openSUSE All Versions - cpe:/o:opensuse:opensuse
+Red Hat Enterprise Linux Optional Productivity Applications - cpe:/a:redhat:rhel_productivity
+Red Hat Enterprise Linux Optional Productivity Applications 5 - cpe:/a:redhat:rhel_productivity:5
+Wind River Linux all versions - cpe:/o:windriver:wrlinux
+Wind River Linux 8 - cpe:/o:windriver:wrlinux:8
+Wind River Linux 1019 - cpe:/o:windriver:wrlinux:1019
+Microsoft Windows 7 - cpe:/o:microsoft:windows_7
+Microsoft Windows 8 - cpe:/o:microsoft:windows_8
+Microsoft Windows 8.1 - cpe:/o:microsoft:windows_8.1
+Microsoft Windows 10 - cpe:/o:microsoft:windows_10
+Microsoft Windows Server 2008 - cpe:/o:microsoft:windows_server_2008
+Microsoft Windows Server 2012 - cpe:/o:microsoft:windows_server_2012
+Microsoft Windows Server 2016 - cpe:/o:microsoft:windows_server_2016
+
+==== Supported OVAL objects and associated OpenSCAP probes ====
+OVAL family   OVAL object                  OpenSCAP probe
+----------    ----------                   ----------
+independent   environmentvariable          probe_environmentvariable
+independent   environmentvariable58        probe_environmentvariable58
+independent   family                       probe_family
+independent   filehash                     probe_filehash
+independent   filehash58                   probe_filehash58
+independent   system_info                  probe_system_info
+independent   textfilecontent              probe_textfilecontent
+independent   textfilecontent54            probe_textfilecontent54
+independent   variable                     probe_variable
+independent   xmlfilecontent               probe_xmlfilecontent
+independent   yamlfilecontent              probe_yamlfilecontent
+linux         iflisteners                  probe_iflisteners
+linux         inetlisteningservers         probe_inetlisteningservers
+linux         partition                    probe_partition
+linux         rpminfo                      probe_rpminfo
+linux         rpmverify                    probe_rpmverify
+linux         rpmverifyfile                probe_rpmverifyfile
+linux         rpmverifypackage             probe_rpmverifypackage
+linux         selinuxboolean               probe_selinuxboolean
+linux         selinuxsecuritycontext       probe_selinuxsecuritycontext
+linux         systemdunitdependency        probe_systemdunitdependency
+linux         systemdunitproperty          probe_systemdunitproperty
+unix          dnscache                     probe_dnscache
+unix          file                         probe_file
+unix          fileextendedattribute        probe_fileextendedattribute
+unix          gconf                        probe_gconf
+unix          interface                    probe_interface
+unix          password                     probe_password
+unix          process                      probe_process
+unix          process58                    probe_process58
+unix          routingtable                 probe_routingtable
+unix          runlevel                     probe_runlevel
+unix          shadow                       probe_shadow
+unix          symlink                      probe_symlink
+unix          sysctl                       probe_sysctl
+unix          uname                        probe_uname
+unix          xinetd                       probe_xinetd
+
+TASK [ssato.openscap_vul_check : Debug the output of the previous command, the scanner could run] *************************************************************
+task path: /home/ssato/repos/public/github.com/ssato/ansible-role-openscap-vul-check.git/tasks/prepare.yml:30
+ok: [rhel-8-client-1] => {
+    "__result": {
+        "changed": false,
+        "cmd": [
+            "oscap",
+            "-V"
+        ],
+        "delta": "0:00:00.025483",
+        "end": "2021-05-22 23:39:30.377631",
+        "failed": false,
+        "rc": 0,
+        "start": "2021-05-22 23:39:30.352148",
+        "stderr": "",
+        "stderr_lines": [],
+        "stdout": "OpenSCAP command line tool (oscap) 1.3.4\nCopyright 2009--2020 Red Hat Inc., Durham, North Carolina.\n\n==== Supported specifications ====\nXCCDF Version: 1.2\nOVAL Version: 5.11.1\nCPE Version: 2.3\nCVSS Version: 2.0\nCVE Version: 2.0\nAsset Identification Version: 1.1\nAsset Reporting Format Version: 1.1\nCVRF Version: 1.1\n\n==== Capabilities added by auto-loaded plugins ====\nNo plugins have been auto-loaded...\n\n==== Paths ====\nSchema files: /usr/share/openscap/schemas\nDefault CPE files: /usr/share/openscap/cpe\n\n==== Inbuilt CPE names ====\nRed Hat Enterprise Linux - cpe:/o:redhat:enterprise_linux\nRed Hat Enterprise Linux 5 - cpe:/o:redhat:enterprise_linux:5\nRed Hat Enterprise Linux 6 - cpe:/o:redhat:enterprise_linux:6\nRed Hat Enterprise Linux 7 - cpe:/o:redhat:enterprise_linux:7\nRed Hat Enterprise Linux 8 - cpe:/o:redhat:enterprise_linux:8\nOracle Linux 5 - cpe:/o:oracle:linux:5\nOracle Linux 6 - cpe:/o:oracle:linux:6\nOracle Linux 7 - cpe:/o:oracle:linux:7\nOracle Linux 8 - cpe:/o:oracle:linux:8\nCommunity Enterprise Operating System 5 - cpe:/o:centos:centos:5\nCommunity Enterprise Operating System 6 - cpe:/o:centos:centos:6\nCommunity Enterprise Operating System 7 - cpe:/o:centos:centos:7\nScientific Linux 5 - cpe:/o:scientificlinux:scientificlinux:5\nScientific Linux 6 - cpe:/o:scientificlinux:scientificlinux:6\nScientific Linux 7 - cpe:/o:scientificlinux:scientificlinux:7\nFedora 16 - cpe:/o:fedoraproject:fedora:16\nFedora 17 - cpe:/o:fedoraproject:fedora:17\nFedora 18 - cpe:/o:fedoraproject:fedora:18\nFedora 19 - cpe:/o:fedoraproject:fedora:19\nFedora 20 - cpe:/o:fedoraproject:fedora:20\nFedora 21 - cpe:/o:fedoraproject:fedora:21\nFedora 22 - cpe:/o:fedoraproject:fedora:22\nFedora 23 - cpe:/o:fedoraproject:fedora:23\nFedora 24 - cpe:/o:fedoraproject:fedora:24\nFedora 25 - cpe:/o:fedoraproject:fedora:25\nFedora 26 - cpe:/o:fedoraproject:fedora:26\nFedora 27 - cpe:/o:fedoraproject:fedora:27\nFedora 28 - cpe:/o:fedoraproject:fedora:28\nFedora 29 - cpe:/o:fedoraproject:fedora:29\nFedora 30 - cpe:/o:fedoraproject:fedora:30\nFedora 31 - cpe:/o:fedoraproject:fedora:31\nFedora 32 - cpe:/o:fedoraproject:fedora:32\nFedora 33 - cpe:/o:fedoraproject:fedora:33\nSUSE Linux Enterprise all versions - cpe:/o:suse:sle\nSUSE Linux Enterprise Server 10 - cpe:/o:suse:sles:10\nSUSE Linux Enterprise Desktop 10 - cpe:/o:suse:sled:10\nSUSE Linux Enterprise Server 11 - cpe:/o:suse:linux_enterprise_server:11\nSUSE Linux Enterprise Desktop 11 - cpe:/o:suse:linux_enterprise_desktop:11\nSUSE Linux Enterprise Server 12 - cpe:/o:suse:sles:12\nSUSE Linux Enterprise Desktop 12 - cpe:/o:suse:sled:12\nopenSUSE 11.4 - cpe:/o:opensuse:opensuse:11.4\nopenSUSE 13.1 - cpe:/o:opensuse:opensuse:13.1\nopenSUSE 13.2 - cpe:/o:opensuse:opensuse:13.2\nopenSUSE 42.1 - cpe:/o:novell:leap:42.1\nopenSUSE Leap 42.1 - cpe:/o:opensuse:leap:42.1\nopenSUSE 42.2 - cpe:/o:novell:leap:42.2\nopenSUSE Leap 42.2 - cpe:/o:opensuse:leap:42.2\nopenSUSE Leap 42.3 - cpe:/o:opensuse:leap:42.3\nopenSUSE Leap 15.0 - cpe:/o:opensuse:leap:15.0\nopenSUSE All Versions - cpe:/o:opensuse:opensuse\nRed Hat Enterprise Linux Optional Productivity Applications - cpe:/a:redhat:rhel_productivity\nRed Hat Enterprise Linux Optional Productivity Applications 5 - cpe:/a:redhat:rhel_productivity:5\nWind River Linux all versions - cpe:/o:windriver:wrlinux\nWind River Linux 8 - cpe:/o:windriver:wrlinux:8\nWind River Linux 1019 - cpe:/o:windriver:wrlinux:1019\nMicrosoft Windows 7 - cpe:/o:microsoft:windows_7\nMicrosoft Windows 8 - cpe:/o:microsoft:windows_8\nMicrosoft Windows 8.1 - cpe:/o:microsoft:windows_8.1\nMicrosoft Windows 10 - cpe:/o:microsoft:windows_10\nMicrosoft Windows Server 2008 - cpe:/o:microsoft:windows_server_2008\nMicrosoft Windows Server 2012 - cpe:/o:microsoft:windows_server_2012\nMicrosoft Windows Server 2016 - cpe:/o:microsoft:windows_server_2016\n\n==== Supported OVAL objects and associated OpenSCAP probes ====\nOVAL family   OVAL object                  OpenSCAP probe              \n----------    ----------                   ----------                  \nindependent   environmentvariable          probe_environmentvariable\nindependent   environmentvariable58        probe_environmentvariable58\nindependent   family                       probe_family\nindependent   filehash                     probe_filehash\nindependent   filehash58                   probe_filehash58\nindependent   system_info                  probe_system_info\nindependent   textfilecontent              probe_textfilecontent\nindependent   textfilecontent54            probe_textfilecontent54\nindependent   variable                     probe_variable\nindependent   xmlfilecontent               probe_xmlfilecontent\nindependent   yamlfilecontent              probe_yamlfilecontent\nlinux         iflisteners                  probe_iflisteners\nlinux         inetlisteningservers         probe_inetlisteningservers\nlinux         partition                    probe_partition\nlinux         rpminfo                      probe_rpminfo\nlinux         rpmverify                    probe_rpmverify\nlinux         rpmverifyfile                probe_rpmverifyfile\nlinux         rpmverifypackage             probe_rpmverifypackage\nlinux         selinuxboolean               probe_selinuxboolean\nlinux         selinuxsecuritycontext       probe_selinuxsecuritycontext\nlinux         systemdunitdependency        probe_systemdunitdependency\nlinux         systemdunitproperty          probe_systemdunitproperty\nunix          dnscache                     probe_dnscache\nunix          file                         probe_file\nunix          fileextendedattribute        probe_fileextendedattribute\nunix          gconf                        probe_gconf\nunix          interface                    probe_interface\nunix          password                     probe_password\nunix          process                      probe_process\nunix          process58                    probe_process58\nunix          routingtable                 probe_routingtable\nunix          runlevel                     probe_runlevel\nunix          shadow                       probe_shadow\nunix          symlink                      probe_symlink\nunix          sysctl                       probe_sysctl\nunix          uname                        probe_uname\nunix          xinetd                       probe_xinetd",
+        "stdout_lines": [
+            "OpenSCAP command line tool (oscap) 1.3.4",
+            "Copyright 2009--2020 Red Hat Inc., Durham, North Carolina.",
+            "",
+            "==== Supported specifications ====",
+            "XCCDF Version: 1.2",
+            "OVAL Version: 5.11.1",
+            "CPE Version: 2.3",
+            "CVSS Version: 2.0",
+            "CVE Version: 2.0",
+            "Asset Identification Version: 1.1",
+            "Asset Reporting Format Version: 1.1",
+            "CVRF Version: 1.1",
+            "",
+            "==== Capabilities added by auto-loaded plugins ====",
+            "No plugins have been auto-loaded...",
+            "",
+            "==== Paths ====",
+            "Schema files: /usr/share/openscap/schemas",
+            "Default CPE files: /usr/share/openscap/cpe",
+            "",
+            "==== Inbuilt CPE names ====",
+            "Red Hat Enterprise Linux - cpe:/o:redhat:enterprise_linux",
+            "Red Hat Enterprise Linux 5 - cpe:/o:redhat:enterprise_linux:5",
+            "Red Hat Enterprise Linux 6 - cpe:/o:redhat:enterprise_linux:6",
+            "Red Hat Enterprise Linux 7 - cpe:/o:redhat:enterprise_linux:7",
+            "Red Hat Enterprise Linux 8 - cpe:/o:redhat:enterprise_linux:8",
+            "Oracle Linux 5 - cpe:/o:oracle:linux:5",
+            "Oracle Linux 6 - cpe:/o:oracle:linux:6",
+            "Oracle Linux 7 - cpe:/o:oracle:linux:7",
+            "Oracle Linux 8 - cpe:/o:oracle:linux:8",
+            "Community Enterprise Operating System 5 - cpe:/o:centos:centos:5",
+            "Community Enterprise Operating System 6 - cpe:/o:centos:centos:6",
+            "Community Enterprise Operating System 7 - cpe:/o:centos:centos:7",
+            "Scientific Linux 5 - cpe:/o:scientificlinux:scientificlinux:5",
+            "Scientific Linux 6 - cpe:/o:scientificlinux:scientificlinux:6",
+            "Scientific Linux 7 - cpe:/o:scientificlinux:scientificlinux:7",
+            "Fedora 16 - cpe:/o:fedoraproject:fedora:16",
+            "Fedora 17 - cpe:/o:fedoraproject:fedora:17",
+            "Fedora 18 - cpe:/o:fedoraproject:fedora:18",
+            "Fedora 19 - cpe:/o:fedoraproject:fedora:19",
+            "Fedora 20 - cpe:/o:fedoraproject:fedora:20",
+            "Fedora 21 - cpe:/o:fedoraproject:fedora:21",
+            "Fedora 22 - cpe:/o:fedoraproject:fedora:22",
+            "Fedora 23 - cpe:/o:fedoraproject:fedora:23",
+            "Fedora 24 - cpe:/o:fedoraproject:fedora:24",
+            "Fedora 25 - cpe:/o:fedoraproject:fedora:25",
+            "Fedora 26 - cpe:/o:fedoraproject:fedora:26",
+            "Fedora 27 - cpe:/o:fedoraproject:fedora:27",
+            "Fedora 28 - cpe:/o:fedoraproject:fedora:28",
+            "Fedora 29 - cpe:/o:fedoraproject:fedora:29",
+            "Fedora 30 - cpe:/o:fedoraproject:fedora:30",
+            "Fedora 31 - cpe:/o:fedoraproject:fedora:31",
+            "Fedora 32 - cpe:/o:fedoraproject:fedora:32",
+            "Fedora 33 - cpe:/o:fedoraproject:fedora:33",
+            "SUSE Linux Enterprise all versions - cpe:/o:suse:sle",
+            "SUSE Linux Enterprise Server 10 - cpe:/o:suse:sles:10",
+            "SUSE Linux Enterprise Desktop 10 - cpe:/o:suse:sled:10",
+            "SUSE Linux Enterprise Server 11 - cpe:/o:suse:linux_enterprise_server:11",
+            "SUSE Linux Enterprise Desktop 11 - cpe:/o:suse:linux_enterprise_desktop:11",
+            "SUSE Linux Enterprise Server 12 - cpe:/o:suse:sles:12",
+            "SUSE Linux Enterprise Desktop 12 - cpe:/o:suse:sled:12",
+            "openSUSE 11.4 - cpe:/o:opensuse:opensuse:11.4",
+            "openSUSE 13.1 - cpe:/o:opensuse:opensuse:13.1",
+            "openSUSE 13.2 - cpe:/o:opensuse:opensuse:13.2",
+            "openSUSE 42.1 - cpe:/o:novell:leap:42.1",
+            "openSUSE Leap 42.1 - cpe:/o:opensuse:leap:42.1",
+            "openSUSE 42.2 - cpe:/o:novell:leap:42.2",
+            "openSUSE Leap 42.2 - cpe:/o:opensuse:leap:42.2",
+            "openSUSE Leap 42.3 - cpe:/o:opensuse:leap:42.3",
+            "openSUSE Leap 15.0 - cpe:/o:opensuse:leap:15.0",
+            "openSUSE All Versions - cpe:/o:opensuse:opensuse",
+            "Red Hat Enterprise Linux Optional Productivity Applications - cpe:/a:redhat:rhel_productivity",
+            "Red Hat Enterprise Linux Optional Productivity Applications 5 - cpe:/a:redhat:rhel_productivity:5",
+            "Wind River Linux all versions - cpe:/o:windriver:wrlinux",
+            "Wind River Linux 8 - cpe:/o:windriver:wrlinux:8",
+            "Wind River Linux 1019 - cpe:/o:windriver:wrlinux:1019",
+            "Microsoft Windows 7 - cpe:/o:microsoft:windows_7",
+            "Microsoft Windows 8 - cpe:/o:microsoft:windows_8",
+            "Microsoft Windows 8.1 - cpe:/o:microsoft:windows_8.1",
+            "Microsoft Windows 10 - cpe:/o:microsoft:windows_10",
+            "Microsoft Windows Server 2008 - cpe:/o:microsoft:windows_server_2008",
+            "Microsoft Windows Server 2012 - cpe:/o:microsoft:windows_server_2012",
+            "Microsoft Windows Server 2016 - cpe:/o:microsoft:windows_server_2016",
+            "",
+            "==== Supported OVAL objects and associated OpenSCAP probes ====",
+            "OVAL family   OVAL object                  OpenSCAP probe              ",
+            "----------    ----------                   ----------                  ",
+            "independent   environmentvariable          probe_environmentvariable",
+            "independent   environmentvariable58        probe_environmentvariable58",
+            "independent   family                       probe_family",
+            "independent   filehash                     probe_filehash",
+            "independent   filehash58                   probe_filehash58",
+            "independent   system_info                  probe_system_info",
+            "independent   textfilecontent              probe_textfilecontent",
+            "independent   textfilecontent54            probe_textfilecontent54",
+            "independent   variable                     probe_variable",
+            "independent   xmlfilecontent               probe_xmlfilecontent",
+            "independent   yamlfilecontent              probe_yamlfilecontent",
+            "linux         iflisteners                  probe_iflisteners",
+            "linux         inetlisteningservers         probe_inetlisteningservers",
+            "linux         partition                    probe_partition",
+            "linux         rpminfo                      probe_rpminfo",
+            "linux         rpmverify                    probe_rpmverify",
+            "linux         rpmverifyfile                probe_rpmverifyfile",
+            "linux         rpmverifypackage             probe_rpmverifypackage",
+            "linux         selinuxboolean               probe_selinuxboolean",
+            "linux         selinuxsecuritycontext       probe_selinuxsecuritycontext",
+            "linux         systemdunitdependency        probe_systemdunitdependency",
+            "linux         systemdunitproperty          probe_systemdunitproperty",
+            "unix          dnscache                     probe_dnscache",
+            "unix          file                         probe_file",
+            "unix          fileextendedattribute        probe_fileextendedattribute",
+            "unix          gconf                        probe_gconf",
+            "unix          interface                    probe_interface",
+            "unix          password                     probe_password",
+            "unix          process                      probe_process",
+            "unix          process58                    probe_process58",
+            "unix          routingtable                 probe_routingtable",
+            "unix          runlevel                     probe_runlevel",
+            "unix          shadow                       probe_shadow",
+            "unix          symlink                      probe_symlink",
+            "unix          sysctl                       probe_sysctl",
+            "unix          uname                        probe_uname",
+            "unix          xinetd                       probe_xinetd"
+        ]
+    }
+}
+
+TASK [ssato.openscap_vul_check : Fetch security reference data] ***********************************************************************************************
+task path: /home/ssato/repos/public/github.com/ssato/ansible-role-openscap-vul-check.git/tasks/prepare.yml:36
+ok: [rhel-8-client-1] => {
+    "changed": false,
+    "dest": "/tmp/sec_ref_data.dat",
+    "elapsed": 5,
+    "gid": 0,
+    "group": "root",
+    "mode": "0644",
+    "owner": "root",
+    "secontext": "unconfined_u:object_r:admin_home_t:s0",
+    "size": 531813,
+    "state": "file",
+    "uid": 0,
+    "url": "https://www.redhat.com/security/data/metrics/ds/v2/RHEL8/rhel-8.ds.xml.bz2"
+}
+
+MSG:
+
+HTTP Error 304: Not Modified
+
+TASK [ssato.openscap_vul_check : Run vul checks] **************************************************************************************************************
+task path: /home/ssato/repos/public/github.com/ssato/ansible-role-openscap-vul-check.git/tasks/main.yml:8
+included: /home/ssato/repos/public/github.com/ssato/ansible-role-openscap-vul-check.git/tasks/run.yml for rhel-8-client-1
+
+TASK [ssato.openscap_vul_check : Check security reference data using the scanner] *****************************************************************************
+task path: /home/ssato/repos/public/github.com/ssato/ansible-role-openscap-vul-check.git/tasks/run.yml:2
+ok: [rhel-8-client-1] => {
+    "changed": false,
+    "cmd": [
+        "oscap",
+        "info",
+        "/tmp/sec_ref_data.dat"
+    ],
+    "delta": "0:00:00.878248",
+    "end": "2021-05-22 23:39:39.524082",
+    "rc": 0,
+    "start": "2021-05-22 23:39:38.645834"
+}
+
+STDOUT:
+
+Document type: Source Data Stream
+Imported: 2021-05-22T23:00:25
+
+Stream: scap_org.open-scap_datastream_from_xccdf_com.redhat.rhsa-all.xml-xccdf12
+Generated: (null)
+Version: 1.2
+Checklists:
+        Ref-Id: scap_org.open-scap_cref_com.redhat.rhsa-all.xml-xccdf12
+                Status: incomplete
+                Resolved: true
+                Profiles:
+                Referenced check files:
+                        com.redhat.rhsa-all.xml
+                                system: http://oval.mitre.org/XMLSchema/oval-definitions-5
+Checks:
+        Ref-Id: scap_org.open-scap_cref_com.redhat.rhsa-all.xml
+No dictionaries.
+
+TASK [ssato.openscap_vul_check : Debug the output of the previous command] ************************************************************************************
+task path: /home/ssato/repos/public/github.com/ssato/ansible-role-openscap-vul-check.git/tasks/run.yml:8
+ok: [rhel-8-client-1] => {
+    "__result": {
+        "changed": false,
+        "cmd": [
+            "oscap",
+            "info",
+            "/tmp/sec_ref_data.dat"
+        ],
+        "delta": "0:00:00.878248",
+        "end": "2021-05-22 23:39:39.524082",
+        "failed": false,
+        "rc": 0,
+        "start": "2021-05-22 23:39:38.645834",
+        "stderr": "",
+        "stderr_lines": [],
+        "stdout": "Document type: Source Data Stream\nImported: 2021-05-22T23:00:25\n\nStream: scap_org.open-scap_datastream_from_xccdf_com.redhat.rhsa-all.xml-xccdf12\nGenerated: (null)\nVersion: 1.2\nChecklists:\n\tRef-Id: scap_org.open-scap_cref_com.redhat.rhsa-all.xml-xccdf12\n\t\tStatus: incomplete\n\t\tResolved: true\n\t\tProfiles:\n\t\tReferenced check files:\n\t\t\tcom.redhat.rhsa-all.xml\n\t\t\t\tsystem: http://oval.mitre.org/XMLSchema/oval-definitions-5\nChecks:\n\tRef-Id: scap_org.open-scap_cref_com.redhat.rhsa-all.xml\nNo dictionaries.",
+        "stdout_lines": [
+            "Document type: Source Data Stream",
+            "Imported: 2021-05-22T23:00:25",
+            "",
+            "Stream: scap_org.open-scap_datastream_from_xccdf_com.redhat.rhsa-all.xml-xccdf12",
+            "Generated: (null)",
+            "Version: 1.2",
+            "Checklists:",
+            "\tRef-Id: scap_org.open-scap_cref_com.redhat.rhsa-all.xml-xccdf12",
+            "\t\tStatus: incomplete",
+            "\t\tResolved: true",
+            "\t\tProfiles:",
+            "\t\tReferenced check files:",
+            "\t\t\tcom.redhat.rhsa-all.xml",
+            "\t\t\t\tsystem: http://oval.mitre.org/XMLSchema/oval-definitions-5",
+            "Checks:",
+            "\tRef-Id: scap_org.open-scap_cref_com.redhat.rhsa-all.xml",
+            "No dictionaries."
+        ]
+    }
+}
+
+TASK [ssato.openscap_vul_check : Do vulnerabilities checks using the scanner with ref. data] ******************************************************************
+task path: /home/ssato/repos/public/github.com/ssato/ansible-role-openscap-vul-check.git/tasks/run.yml:14
+ok: [rhel-8-client-1] => {
+    "changed": false,
+    "cmd": [
+        "oscap",
+        "oval",
+        "eval",
+        "--report",
+        "/tmp/openscap_sec_vul_result_for_rhel_8_report.html",
+        "/tmp/sec_ref_data.dat"
+    ],
+    "delta": "0:00:22.010642",
+    "end": "2021-05-22 23:40:02.629763",
+    "rc": 0,
+    "start": "2021-05-22 23:39:40.619121"
+}
+
+STDOUT:
+
+Definition oval:com.redhat.rhsa:def:20212037: false
+Definition oval:com.redhat.rhsa:def:20212036: false
+Definition oval:com.redhat.rhsa:def:20212034: false
+Definition oval:com.redhat.rhsa:def:20211989: true
+Definition oval:com.redhat.rhsa:def:20211983: false
+Definition oval:com.redhat.rhsa:def:20211979: false
+Definition oval:com.redhat.rhsa:def:20211972: false
+Definition oval:com.redhat.rhsa:def:20211968: false
+Definition oval:com.redhat.rhsa:def:20211935: false
+Definition oval:com.redhat.rhsa:def:20211924: false
+Definition oval:com.redhat.rhsa:def:20211898: false
+Definition oval:com.redhat.rhsa:def:20211887: false
+Definition oval:com.redhat.rhsa:def:20211881: false
+Definition oval:com.redhat.rhsa:def:20211879: false
+Definition oval:com.redhat.rhsa:def:20211859: false
+Definition oval:com.redhat.rhsa:def:20211853: false
+Definition oval:com.redhat.rhsa:def:20211852: false
+Definition oval:com.redhat.rhsa:def:20211849: false
+Definition oval:com.redhat.rhsa:def:20211846: false
+Definition oval:com.redhat.rhsa:def:20211842: false
+Definition oval:com.redhat.rhsa:def:20211811: false
+Definition oval:com.redhat.rhsa:def:20211809: false
+Definition oval:com.redhat.rhsa:def:20211804: false
+Definition oval:com.redhat.rhsa:def:20211796: false
+Definition oval:com.redhat.rhsa:def:20211791: false
+Definition oval:com.redhat.rhsa:def:20211789: false
+Definition oval:com.redhat.rhsa:def:20211783: false
+Definition oval:com.redhat.rhsa:def:20211775: false
+Definition oval:com.redhat.rhsa:def:20211762: false
+Definition oval:com.redhat.rhsa:def:20211761: false
+Definition oval:com.redhat.rhsa:def:20211758: false
+Definition oval:com.redhat.rhsa:def:20211756: false
+Definition oval:com.redhat.rhsa:def:20211752: false
+Definition oval:com.redhat.rhsa:def:20211751: false
+Definition oval:com.redhat.rhsa:def:20211746: false
+Definition oval:com.redhat.rhsa:def:20211744: false
+Definition oval:com.redhat.rhsa:def:20211739: false
+Definition oval:com.redhat.rhsa:def:20211734: false
+Definition oval:com.redhat.rhsa:def:20211723: false
+Definition oval:com.redhat.rhsa:def:20211702: false
+Definition oval:com.redhat.rhsa:def:20211686: false
+Definition oval:com.redhat.rhsa:def:20211679: false
+Definition oval:com.redhat.rhsa:def:20211678: false
+Definition oval:com.redhat.rhsa:def:20211675: false
+Definition oval:com.redhat.rhsa:def:20211647: false
+Definition oval:com.redhat.rhsa:def:20211633: false
+Definition oval:com.redhat.rhsa:def:20211631: false
+Definition oval:com.redhat.rhsa:def:20211627: false
+Definition oval:com.redhat.rhsa:def:20211620: false
+Definition oval:com.redhat.rhsa:def:20211611: false
+Definition oval:com.redhat.rhsa:def:20211610: false
+Definition oval:com.redhat.rhsa:def:20211609: false
+Definition oval:com.redhat.rhsa:def:20211608: false
+Definition oval:com.redhat.rhsa:def:20211600: false
+Definition oval:com.redhat.rhsa:def:20211598: false
+Definition oval:com.redhat.rhsa:def:20211597: false
+Definition oval:com.redhat.rhsa:def:20211593: false
+Definition oval:com.redhat.rhsa:def:20211586: false
+Definition oval:com.redhat.rhsa:def:20211585: false
+Definition oval:com.redhat.rhsa:def:20211582: false
+Definition oval:com.redhat.rhsa:def:20211581: false
+Definition oval:com.redhat.rhsa:def:20211578: true
+Definition oval:com.redhat.rhsa:def:20211574: false
+Definition oval:com.redhat.rhsa:def:20211360: false
+Definition oval:com.redhat.rhsa:def:20211353: false
+Definition oval:com.redhat.rhsa:def:20211307: false
+Definition oval:com.redhat.rhsa:def:20211301: false
+Definition oval:com.redhat.rhsa:def:20211242: false
+Definition oval:com.redhat.rhsa:def:20211206: true
+Definition oval:com.redhat.rhsa:def:20211197: false
+Definition oval:com.redhat.rhsa:def:20211193: false
+Definition oval:com.redhat.rhsa:def:20211093: true
+Definition oval:com.redhat.rhsa:def:20211086: false
+Definition oval:com.redhat.rhsa:def:20211081: false
+Definition oval:com.redhat.rhsa:def:20211068: false
+Definition oval:com.redhat.rhsa:def:20211064: false
+Definition oval:com.redhat.rhsa:def:20211024: false
+Definition oval:com.redhat.rhsa:def:20210993: false
+Definition oval:com.redhat.rhsa:def:20210990: false
+Definition oval:com.redhat.rhsa:def:20210966: false
+Definition oval:com.redhat.rhsa:def:20210809: false
+Definition oval:com.redhat.rhsa:def:20210793: false
+Definition oval:com.redhat.rhsa:def:20210790: false
+Definition oval:com.redhat.rhsa:def:20210788: false
+Definition oval:com.redhat.rhsa:def:20210744: false
+Definition oval:com.redhat.rhsa:def:20210736: false
+Definition oval:com.redhat.rhsa:def:20210735: false
+Definition oval:com.redhat.rhsa:def:20210734: false
+Definition oval:com.redhat.rhsa:def:20210711: false
+Definition oval:com.redhat.rhsa:def:20210706: false
+Definition oval:com.redhat.rhsa:def:20210705: false
+Definition oval:com.redhat.rhsa:def:20210696: false
+Definition oval:com.redhat.rhsa:def:20210670: false
+Definition oval:com.redhat.rhsa:def:20210657: false
+Definition oval:com.redhat.rhsa:def:20210655: false
+Definition oval:com.redhat.rhsa:def:20210618: false
+Definition oval:com.redhat.rhsa:def:20210611: false
+Definition oval:com.redhat.rhsa:def:20210558: true
+Definition oval:com.redhat.rhsa:def:20210557: false
+Definition oval:com.redhat.rhsa:def:20210551: false
+Definition oval:com.redhat.rhsa:def:20210549: false
+Definition oval:com.redhat.rhsa:def:20210548: false
+Definition oval:com.redhat.rhsa:def:20210538: false
+Definition oval:com.redhat.rhsa:def:20210537: false
+Definition oval:com.redhat.rhsa:def:20210531: false
+Definition oval:com.redhat.rhsa:def:20210530: false
+Definition oval:com.redhat.rhsa:def:20210507: false
+Definition oval:com.redhat.rhsa:def:20210476: false
+Definition oval:com.redhat.rhsa:def:20210474: false
+Definition oval:com.redhat.rhsa:def:20210471: false
+Definition oval:com.redhat.rhsa:def:20210304: false
+Definition oval:com.redhat.rhsa:def:20210298: false
+Definition oval:com.redhat.rhsa:def:20210288: false
+Definition oval:com.redhat.rhsa:def:20210218: false
+Definition oval:com.redhat.rhsa:def:20210150: false
+Definition oval:com.redhat.rhsa:def:20210095: false
+Definition oval:com.redhat.rhsa:def:20210094: false
+Definition oval:com.redhat.rhsa:def:20210089: false
+Definition oval:com.redhat.rhsa:def:20210052: false
+Definition oval:com.redhat.rhsa:def:20210004: false
+Definition oval:com.redhat.rhsa:def:20210003: true
+Definition oval:com.redhat.rhsa:def:20205624: false
+Definition oval:com.redhat.rhsa:def:20205620: false
+Definition oval:com.redhat.rhsa:def:20205619: false
+Definition oval:com.redhat.rhsa:def:20205567: false
+Definition oval:com.redhat.rhsa:def:20205562: false
+Definition oval:com.redhat.rhsa:def:20205506: false
+Definition oval:com.redhat.rhsa:def:20205503: false
+Definition oval:com.redhat.rhsa:def:20205500: false
+Definition oval:com.redhat.rhsa:def:20205499: false
+Definition oval:com.redhat.rhsa:def:20205495: false
+Definition oval:com.redhat.rhsa:def:20205493: false
+Definition oval:com.redhat.rhsa:def:20205487: false
+Definition oval:com.redhat.rhsa:def:20205483: false
+Definition oval:com.redhat.rhsa:def:20205480: false
+Definition oval:com.redhat.rhsa:def:20205479: false
+Definition oval:com.redhat.rhsa:def:20205476: false
+Definition oval:com.redhat.rhsa:def:20205473: true
+Definition oval:com.redhat.rhsa:def:20205401: false
+Definition oval:com.redhat.rhsa:def:20205398: false
+Definition oval:com.redhat.rhsa:def:20205393: false
+Definition oval:com.redhat.rhsa:def:20205237: false
+Definition oval:com.redhat.rhsa:def:20205236: false
+Definition oval:com.redhat.rhsa:def:20205146: false
+Definition oval:com.redhat.rhsa:def:20205100: false
+Definition oval:com.redhat.rhsa:def:20205085: false
+Definition oval:com.redhat.rhsa:def:20204952: false
+Definition oval:com.redhat.rhsa:def:20204913: false
+Definition oval:com.redhat.rhsa:def:20204847: false
+Definition oval:com.redhat.rhsa:def:20204846: false
+Definition oval:com.redhat.rhsa:def:20204844: false
+Definition oval:com.redhat.rhsa:def:20204827: false
+Definition oval:com.redhat.rhsa:def:20204820: false
+Definition oval:com.redhat.rhsa:def:20204807: false
+Definition oval:com.redhat.rhsa:def:20204806: false
+Definition oval:com.redhat.rhsa:def:20204805: false
+Definition oval:com.redhat.rhsa:def:20204799: false
+Definition oval:com.redhat.rhsa:def:20204766: false
+Definition oval:com.redhat.rhsa:def:20204763: false
+Definition oval:com.redhat.rhsa:def:20204760: false
+Definition oval:com.redhat.rhsa:def:20204756: false
+Definition oval:com.redhat.rhsa:def:20204751: false
+Definition oval:com.redhat.rhsa:def:20204743: false
+Definition oval:com.redhat.rhsa:def:20204712: false
+Definition oval:com.redhat.rhsa:def:20204709: false
+Definition oval:com.redhat.rhsa:def:20204697: false
+Definition oval:com.redhat.rhsa:def:20204694: false
+Definition oval:com.redhat.rhsa:def:20204690: false
+Definition oval:com.redhat.rhsa:def:20204689: false
+Definition oval:com.redhat.rhsa:def:20204687: false
+Definition oval:com.redhat.rhsa:def:20204686: false
+Definition oval:com.redhat.rhsa:def:20204685: true
+Definition oval:com.redhat.rhsa:def:20204682: false
+Definition oval:com.redhat.rhsa:def:20204676: false
+Definition oval:com.redhat.rhsa:def:20204670: false
+Definition oval:com.redhat.rhsa:def:20204667: false
+Definition oval:com.redhat.rhsa:def:20204659: false
+Definition oval:com.redhat.rhsa:def:20204655: false
+Definition oval:com.redhat.rhsa:def:20204654: false
+Definition oval:com.redhat.rhsa:def:20204650: false
+Definition oval:com.redhat.rhsa:def:20204649: false
+Definition oval:com.redhat.rhsa:def:20204647: false
+Definition oval:com.redhat.rhsa:def:20204643: false
+Definition oval:com.redhat.rhsa:def:20204641: false
+Definition oval:com.redhat.rhsa:def:20204638: false
+Definition oval:com.redhat.rhsa:def:20204634: false
+Definition oval:com.redhat.rhsa:def:20204629: false
+Definition oval:com.redhat.rhsa:def:20204628: false
+Definition oval:com.redhat.rhsa:def:20204627: false
+Definition oval:com.redhat.rhsa:def:20204625: false
+Definition oval:com.redhat.rhsa:def:20204619: false
+Definition oval:com.redhat.rhsa:def:20204609: false
+Definition oval:com.redhat.rhsa:def:20204605: false
+Definition oval:com.redhat.rhsa:def:20204599: false
+Definition oval:com.redhat.rhsa:def:20204568: false
+Definition oval:com.redhat.rhsa:def:20204553: false
+Definition oval:com.redhat.rhsa:def:20204547: false
+Definition oval:com.redhat.rhsa:def:20204545: false
+Definition oval:com.redhat.rhsa:def:20204542: false
+Definition oval:com.redhat.rhsa:def:20204539: false
+Definition oval:com.redhat.rhsa:def:20204514: false
+Definition oval:com.redhat.rhsa:def:20204508: false
+Definition oval:com.redhat.rhsa:def:20204500: false
+Definition oval:com.redhat.rhsa:def:20204497: false
+Definition oval:com.redhat.rhsa:def:20204490: false
+Definition oval:com.redhat.rhsa:def:20204484: false
+Definition oval:com.redhat.rhsa:def:20204483: false
+Definition oval:com.redhat.rhsa:def:20204482: false
+Definition oval:com.redhat.rhsa:def:20204481: false
+Definition oval:com.redhat.rhsa:def:20204479: false
+Definition oval:com.redhat.rhsa:def:20204469: false
+Definition oval:com.redhat.rhsa:def:20204465: false
+Definition oval:com.redhat.rhsa:def:20204464: false
+Definition oval:com.redhat.rhsa:def:20204453: false
+Definition oval:com.redhat.rhsa:def:20204451: false
+Definition oval:com.redhat.rhsa:def:20204445: false
+Definition oval:com.redhat.rhsa:def:20204444: false
+Definition oval:com.redhat.rhsa:def:20204443: false
+Definition oval:com.redhat.rhsa:def:20204442: false
+Definition oval:com.redhat.rhsa:def:20204436: false
+Definition oval:com.redhat.rhsa:def:20204433: false
+Definition oval:com.redhat.rhsa:def:20204432: false
+Definition oval:com.redhat.rhsa:def:20204431: true
+Definition oval:com.redhat.rhsa:def:20204347: false
+Definition oval:com.redhat.rhsa:def:20204331: false
+Definition oval:com.redhat.rhsa:def:20204317: false
+Definition oval:com.redhat.rhsa:def:20204305: false
+Definition oval:com.redhat.rhsa:def:20204289: false
+Definition oval:com.redhat.rhsa:def:20204286: true
+Definition oval:com.redhat.rhsa:def:20204272: false
+Definition oval:com.redhat.rhsa:def:20204186: false
+Definition oval:com.redhat.rhsa:def:20204155: false
+Definition oval:com.redhat.rhsa:def:20204059: false
+Definition oval:com.redhat.rhsa:def:20203832: false
+Definition oval:com.redhat.rhsa:def:20203732: false
+Definition oval:com.redhat.rhsa:def:20203714: false
+Definition oval:com.redhat.rhsa:def:20203713: false
+Definition oval:com.redhat.rhsa:def:20203699: false
+Definition oval:com.redhat.rhsa:def:20203669: false
+Definition oval:com.redhat.rhsa:def:20203665: false
+Definition oval:com.redhat.rhsa:def:20203662: false
+Definition oval:com.redhat.rhsa:def:20203658: false
+Definition oval:com.redhat.rhsa:def:20203654: false
+Definition oval:com.redhat.rhsa:def:20203634: false
+Definition oval:com.redhat.rhsa:def:20203623: false
+Definition oval:com.redhat.rhsa:def:20203557: false
+Definition oval:com.redhat.rhsa:def:20203422: false
+Definition oval:com.redhat.rhsa:def:20203386: false
+Definition oval:com.redhat.rhsa:def:20203385: false
+Definition oval:com.redhat.rhsa:def:20203341: false
+Definition oval:com.redhat.rhsa:def:20203280: false
+Definition oval:com.redhat.rhsa:def:20203241: false
+Definition oval:com.redhat.rhsa:def:20203219: false
+Definition oval:com.redhat.rhsa:def:20203218: true
+Definition oval:com.redhat.rhsa:def:20203216: false
+Definition oval:com.redhat.rhsa:def:20203185: false
+Definition oval:com.redhat.rhsa:def:20203176: false
+Definition oval:com.redhat.rhsa:def:20203073: false
+Definition oval:com.redhat.rhsa:def:20203053: false
+Definition oval:com.redhat.rhsa:def:20203050: false
+Definition oval:com.redhat.rhsa:def:20203038: false
+Definition oval:com.redhat.rhsa:def:20203032: false
+Definition oval:com.redhat.rhsa:def:20203016: false
+Definition oval:com.redhat.rhsa:def:20203014: false
+Definition oval:com.redhat.rhsa:def:20203011: false
+Definition oval:com.redhat.rhsa:def:20203010: true
+Definition oval:com.redhat.rhsa:def:20202972: false
+Definition oval:com.redhat.rhsa:def:20202970: false
+Definition oval:com.redhat.rhsa:def:20202954: false
+Definition oval:com.redhat.rhsa:def:20202938: false
+Definition oval:com.redhat.rhsa:def:20202902: false
+Definition oval:com.redhat.rhsa:def:20202901: false
+Definition oval:com.redhat.rhsa:def:20202897: false
+Definition oval:com.redhat.rhsa:def:20202852: false
+Definition oval:com.redhat.rhsa:def:20202848: false
+Definition oval:com.redhat.rhsa:def:20202828: false
+Definition oval:com.redhat.rhsa:def:20202774: false
+Definition oval:com.redhat.rhsa:def:20202755: false
+Definition oval:com.redhat.rhsa:def:20202641: false
+Definition oval:com.redhat.rhsa:def:20202637: false
+Definition oval:com.redhat.rhsa:def:20202614: false
+Definition oval:com.redhat.rhsa:def:20202567: false
+Definition oval:com.redhat.rhsa:def:20202550: false
+Definition oval:com.redhat.rhsa:def:20202471: false
+Definition oval:com.redhat.rhsa:def:20202462: false
+Definition oval:com.redhat.rhsa:def:20202450: false
+Definition oval:com.redhat.rhsa:def:20202431: false
+Definition oval:com.redhat.rhsa:def:20202428: false
+Definition oval:com.redhat.rhsa:def:20202427: true
+Definition oval:com.redhat.rhsa:def:20202416: false
+Definition oval:com.redhat.rhsa:def:20202407: false
+Definition oval:com.redhat.rhsa:def:20202379: false
+Definition oval:com.redhat.rhsa:def:20202338: false
+Definition oval:com.redhat.rhsa:def:20202336: false
+Definition oval:com.redhat.rhsa:def:20202250: false
+Definition oval:com.redhat.rhsa:def:20202241: false
+Definition oval:com.redhat.rhsa:def:20202171: false
+Definition oval:com.redhat.rhsa:def:20202143: false
+Definition oval:com.redhat.rhsa:def:20202125: false
+Definition oval:com.redhat.rhsa:def:20202102: true
+Definition oval:com.redhat.rhsa:def:20202070: false
+Definition oval:com.redhat.rhsa:def:20202046: false
+Definition oval:com.redhat.rhsa:def:20202041: false
+Definition oval:com.redhat.rhsa:def:20202031: false
+Definition oval:com.redhat.rhsa:def:20201998: false
+Definition oval:com.redhat.rhsa:def:20201980: false
+Definition oval:com.redhat.rhsa:def:20201933: false
+Definition oval:com.redhat.rhsa:def:20201932: false
+Definition oval:com.redhat.rhsa:def:20201931: false
+Definition oval:com.redhat.rhsa:def:20201926: false
+Definition oval:com.redhat.rhsa:def:20201921: false
+Definition oval:com.redhat.rhsa:def:20201916: false
+Definition oval:com.redhat.rhsa:def:20201913: false
+Definition oval:com.redhat.rhsa:def:20201912: false
+Definition oval:com.redhat.rhsa:def:20201880: false
+Definition oval:com.redhat.rhsa:def:20201878: false
+Definition oval:com.redhat.rhsa:def:20201864: false
+Definition oval:com.redhat.rhsa:def:20201852: false
+Definition oval:com.redhat.rhsa:def:20201845: false
+Definition oval:com.redhat.rhsa:def:20201840: false
+Definition oval:com.redhat.rhsa:def:20201828: false
+Definition oval:com.redhat.rhsa:def:20201827: false
+Definition oval:com.redhat.rhsa:def:20201810: false
+Definition oval:com.redhat.rhsa:def:20201804: false
+Definition oval:com.redhat.rhsa:def:20201797: false
+Definition oval:com.redhat.rhsa:def:20201794: false
+Definition oval:com.redhat.rhsa:def:20201792: false
+Definition oval:com.redhat.rhsa:def:20201787: false
+Definition oval:com.redhat.rhsa:def:20201769: true
+Definition oval:com.redhat.rhsa:def:20201766: false
+Definition oval:com.redhat.rhsa:def:20201765: false
+Definition oval:com.redhat.rhsa:def:20201764: false
+Definition oval:com.redhat.rhsa:def:20201735: false
+Definition oval:com.redhat.rhsa:def:20201725: false
+Definition oval:com.redhat.rhsa:def:20201716: false
+Definition oval:com.redhat.rhsa:def:20201715: false
+Definition oval:com.redhat.rhsa:def:20201712: false
+Definition oval:com.redhat.rhsa:def:20201708: false
+Definition oval:com.redhat.rhsa:def:20201702: false
+Definition oval:com.redhat.rhsa:def:20201688: false
+Definition oval:com.redhat.rhsa:def:20201686: false
+Definition oval:com.redhat.rhsa:def:20201672: false
+Definition oval:com.redhat.rhsa:def:20201665: false
+Definition oval:com.redhat.rhsa:def:20201660: false
+Definition oval:com.redhat.rhsa:def:20201659: false
+Definition oval:com.redhat.rhsa:def:20201653: false
+Definition oval:com.redhat.rhsa:def:20201650: false
+Definition oval:com.redhat.rhsa:def:20201644: false
+Definition oval:com.redhat.rhsa:def:20201636: false
+Definition oval:com.redhat.rhsa:def:20201635: false
+Definition oval:com.redhat.rhsa:def:20201631: false
+Definition oval:com.redhat.rhsa:def:20201624: false
+Definition oval:com.redhat.rhsa:def:20201616: false
+Definition oval:com.redhat.rhsa:def:20201605: false
+Definition oval:com.redhat.rhsa:def:20201604: false
+Definition oval:com.redhat.rhsa:def:20201600: false
+Definition oval:com.redhat.rhsa:def:20201598: false
+Definition oval:com.redhat.rhsa:def:20201581: false
+Definition oval:com.redhat.rhsa:def:20201577: false
+Definition oval:com.redhat.rhsa:def:20201576: false
+Definition oval:com.redhat.rhsa:def:20201567: false
+Definition oval:com.redhat.rhsa:def:20201515: false
+Definition oval:com.redhat.rhsa:def:20201514: false
+Definition oval:com.redhat.rhsa:def:20201513: false
+Definition oval:com.redhat.rhsa:def:20201497: false
+Definition oval:com.redhat.rhsa:def:20201495: false
+Definition oval:com.redhat.rhsa:def:20201406: false
+Definition oval:com.redhat.rhsa:def:20201379: false
+Definition oval:com.redhat.rhsa:def:20201378: false
+Definition oval:com.redhat.rhsa:def:20201372: true
+Definition oval:com.redhat.rhsa:def:20201360: false
+Definition oval:com.redhat.rhsa:def:20201358: false
+Definition oval:com.redhat.rhsa:def:20201341: false
+Definition oval:com.redhat.rhsa:def:20201318: false
+Definition oval:com.redhat.rhsa:def:20201317: false
+Definition oval:com.redhat.rhsa:def:20201293: false
+Definition oval:com.redhat.rhsa:def:20201288: false
+Definition oval:com.redhat.rhsa:def:20200981: false
+Definition oval:com.redhat.rhsa:def:20200920: false
+Definition oval:com.redhat.rhsa:def:20200919: false
+Definition oval:com.redhat.rhsa:def:20200903: false
+Definition oval:com.redhat.rhsa:def:20200902: false
+Definition oval:com.redhat.rhsa:def:20200820: false
+Definition oval:com.redhat.rhsa:def:20200708: false
+Definition oval:com.redhat.rhsa:def:20200633: false
+Definition oval:com.redhat.rhsa:def:20200598: false
+Definition oval:com.redhat.rhsa:def:20200580: false
+Definition oval:com.redhat.rhsa:def:20200579: false
+Definition oval:com.redhat.rhsa:def:20200577: false
+Definition oval:com.redhat.rhsa:def:20200575: false
+Definition oval:com.redhat.rhsa:def:20200570: false
+Definition oval:com.redhat.rhsa:def:20200559: false
+Definition oval:com.redhat.rhsa:def:20200512: false
+Definition oval:com.redhat.rhsa:def:20200487: false
+Definition oval:com.redhat.rhsa:def:20200465: false
+Definition oval:com.redhat.rhsa:def:20200348: false
+Definition oval:com.redhat.rhsa:def:20200339: true
+Definition oval:com.redhat.rhsa:def:20200335: false
+Definition oval:com.redhat.rhsa:def:20200329: false
+Definition oval:com.redhat.rhsa:def:20200328: false
+Definition oval:com.redhat.rhsa:def:20200279: false
+Definition oval:com.redhat.rhsa:def:20200274: false
+Definition oval:com.redhat.rhsa:def:20200273: false
+Definition oval:com.redhat.rhsa:def:20200271: false
+Definition oval:com.redhat.rhsa:def:20200202: false
+Definition oval:com.redhat.rhsa:def:20200201: false
+Definition oval:com.redhat.rhsa:def:20200130: false
+Definition oval:com.redhat.rhsa:def:20200128: false
+Definition oval:com.redhat.rhsa:def:20200127: false
+Definition oval:com.redhat.rhsa:def:20200111: false
+Definition oval:com.redhat.rhsa:def:20200046: false
+Definition oval:com.redhat.rhsa:def:20194361: false
+Definition oval:com.redhat.rhsa:def:20194360: false
+Definition oval:com.redhat.rhsa:def:20194356: false
+Definition oval:com.redhat.rhsa:def:20194273: false
+Definition oval:com.redhat.rhsa:def:20194269: false
+Definition oval:com.redhat.rhsa:def:20194245: false
+Definition oval:com.redhat.rhsa:def:20194195: false
+Definition oval:com.redhat.rhsa:def:20194114: false
+Definition oval:com.redhat.rhsa:def:20194111: false
+Definition oval:com.redhat.rhsa:def:20193951: false
+Definition oval:com.redhat.rhsa:def:20193936: false
+Definition oval:com.redhat.rhsa:def:20193890: false
+Definition oval:com.redhat.rhsa:def:20193871: true
+Definition oval:com.redhat.rhsa:def:20193870: false
+Definition oval:com.redhat.rhsa:def:20193833: false
+Definition oval:com.redhat.rhsa:def:20193832: true
+Definition oval:com.redhat.rhsa:def:20193736: false
+Definition oval:com.redhat.rhsa:def:20193735: false
+Definition oval:com.redhat.rhsa:def:20193708: false
+Definition oval:com.redhat.rhsa:def:20193707: false
+Definition oval:com.redhat.rhsa:def:20193706: false
+Definition oval:com.redhat.rhsa:def:20193705: false
+Definition oval:com.redhat.rhsa:def:20193704: false
+Definition oval:com.redhat.rhsa:def:20193703: false
+Definition oval:com.redhat.rhsa:def:20193702: false
+Definition oval:com.redhat.rhsa:def:20193701: false
+Definition oval:com.redhat.rhsa:def:20193700: false
+Definition oval:com.redhat.rhsa:def:20193699: false
+Definition oval:com.redhat.rhsa:def:20193698: false
+Definition oval:com.redhat.rhsa:def:20193694: false
+Definition oval:com.redhat.rhsa:def:20193673: false
+Definition oval:com.redhat.rhsa:def:20193651: false
+Definition oval:com.redhat.rhsa:def:20193643: false
+Definition oval:com.redhat.rhsa:def:20193624: false
+Definition oval:com.redhat.rhsa:def:20193610: false
+Definition oval:com.redhat.rhsa:def:20193600: false
+Definition oval:com.redhat.rhsa:def:20193592: false
+Definition oval:com.redhat.rhsa:def:20193590: false
+Definition oval:com.redhat.rhsa:def:20193583: false
+Definition oval:com.redhat.rhsa:def:20193582: false
+Definition oval:com.redhat.rhsa:def:20193575: false
+Definition oval:com.redhat.rhsa:def:20193553: false
+Definition oval:com.redhat.rhsa:def:20193552: false
+Definition oval:com.redhat.rhsa:def:20193530: false
+Definition oval:com.redhat.rhsa:def:20193525: false
+Definition oval:com.redhat.rhsa:def:20193520: false
+Definition oval:com.redhat.rhsa:def:20193517: true
+Definition oval:com.redhat.rhsa:def:20193513: false
+Definition oval:com.redhat.rhsa:def:20193497: false
+Definition oval:com.redhat.rhsa:def:20193494: false
+Definition oval:com.redhat.rhsa:def:20193476: false
+Definition oval:com.redhat.rhsa:def:20193467: false
+Definition oval:com.redhat.rhsa:def:20193464: false
+Definition oval:com.redhat.rhsa:def:20193436: false
+Definition oval:com.redhat.rhsa:def:20193433: false
+Definition oval:com.redhat.rhsa:def:20193421: false
+Definition oval:com.redhat.rhsa:def:20193419: false
+Definition oval:com.redhat.rhsa:def:20193403: false
+Definition oval:com.redhat.rhsa:def:20193401: false
+Definition oval:com.redhat.rhsa:def:20193391: false
+Definition oval:com.redhat.rhsa:def:20193390: false
+Definition oval:com.redhat.rhsa:def:20193387: false
+Definition oval:com.redhat.rhsa:def:20193353: false
+Definition oval:com.redhat.rhsa:def:20193352: false
+Definition oval:com.redhat.rhsa:def:20193345: false
+Definition oval:com.redhat.rhsa:def:20193338: false
+Definition oval:com.redhat.rhsa:def:20193335: false
+Definition oval:com.redhat.rhsa:def:20193309: false
+Definition oval:com.redhat.rhsa:def:20193237: false
+Definition oval:com.redhat.rhsa:def:20193196: false
+Definition oval:com.redhat.rhsa:def:20193135: false
+Definition oval:com.redhat.rhsa:def:20193134: false
+Definition oval:com.redhat.rhsa:def:20192925: false
+Definition oval:com.redhat.rhsa:def:20192893: false
+Definition oval:com.redhat.rhsa:def:20192828: false
+Definition oval:com.redhat.rhsa:def:20192827: true
+Definition oval:com.redhat.rhsa:def:20192822: false
+Definition oval:com.redhat.rhsa:def:20192799: false
+Definition oval:com.redhat.rhsa:def:20192798: false
+Definition oval:com.redhat.rhsa:def:20192774: false
+Definition oval:com.redhat.rhsa:def:20192741: false
+Definition oval:com.redhat.rhsa:def:20192731: false
+Definition oval:com.redhat.rhsa:def:20192726: false
+Definition oval:com.redhat.rhsa:def:20192722: false
+Definition oval:com.redhat.rhsa:def:20192720: false
+Definition oval:com.redhat.rhsa:def:20192713: false
+Definition oval:com.redhat.rhsa:def:20192703: true
+Definition oval:com.redhat.rhsa:def:20192692: false
+Definition oval:com.redhat.rhsa:def:20192663: false
+Definition oval:com.redhat.rhsa:def:20192593: false
+Definition oval:com.redhat.rhsa:def:20192591: false
+Definition oval:com.redhat.rhsa:def:20192590: false
+Definition oval:com.redhat.rhsa:def:20192582: false
+Definition oval:com.redhat.rhsa:def:20192512: false
+Definition oval:com.redhat.rhsa:def:20192511: false
+Definition oval:com.redhat.rhsa:def:20192465: false
+Definition oval:com.redhat.rhsa:def:20192411: false
+Definition oval:com.redhat.rhsa:def:20192405: false
+Definition oval:com.redhat.rhsa:def:20192004: false
+Definition oval:com.redhat.rhsa:def:20192002: false
+Definition oval:com.redhat.rhsa:def:20191972: false
+Definition oval:com.redhat.rhsa:def:20191971: false
+Definition oval:com.redhat.rhsa:def:20191959: false
+Definition oval:com.redhat.rhsa:def:20191951: false
+Definition oval:com.redhat.rhsa:def:20191817: false
+Definition oval:com.redhat.rhsa:def:20191816: false
+Definition oval:com.redhat.rhsa:def:20191799: false
+Definition oval:com.redhat.rhsa:def:20191771: false
+Definition oval:com.redhat.rhsa:def:20191764: false
+Definition oval:com.redhat.rhsa:def:20191714: false
+Definition oval:com.redhat.rhsa:def:20191696: false
+Definition oval:com.redhat.rhsa:def:20191623: false
+Definition oval:com.redhat.rhsa:def:20191619: false
+Definition oval:com.redhat.rhsa:def:20191580: false
+Definition oval:com.redhat.rhsa:def:20191529: false
+Definition oval:com.redhat.rhsa:def:20191527: false
+Definition oval:com.redhat.rhsa:def:20191519: false
+Definition oval:com.redhat.rhsa:def:20191518: false
+Definition oval:com.redhat.rhsa:def:20191517: false
+Definition oval:com.redhat.rhsa:def:20191480: false
+Definition oval:com.redhat.rhsa:def:20191479: false
+Definition oval:com.redhat.rhsa:def:20191308: false
+Definition oval:com.redhat.rhsa:def:20191279: false
+Definition oval:com.redhat.rhsa:def:20191269: false
+Definition oval:com.redhat.rhsa:def:20191268: false
+Definition oval:com.redhat.rhsa:def:20191259: false
+Definition oval:com.redhat.rhsa:def:20191238: false
+Definition oval:com.redhat.rhsa:def:20191175: false
+Definition oval:com.redhat.rhsa:def:20191174: false
+Definition oval:com.redhat.rhsa:def:20191167: false
+Definition oval:com.redhat.rhsa:def:20191152: false
+Definition oval:com.redhat.rhsa:def:20191146: false
+Definition oval:com.redhat.rhsa:def:20191145: false
+Definition oval:com.redhat.rhsa:def:20191144: false
+Definition oval:com.redhat.rhsa:def:20191143: false
+Definition oval:com.redhat.rhsa:def:20191142: false
+Definition oval:com.redhat.rhsa:def:20190997: false
+Definition oval:com.redhat.rhsa:def:20190990: false
+Definition oval:com.redhat.rhsa:def:20190985: false
+Definition oval:com.redhat.rhsa:def:20190984: false
+Definition oval:com.redhat.rhsa:def:20190983: false
+Definition oval:com.redhat.rhsa:def:20190981: false
+Definition oval:com.redhat.rhsa:def:20190980: false
+Definition oval:com.redhat.rhsa:def:20190975: false
+Definition oval:com.redhat.rhsa:def:20190972: false
+Definition oval:com.redhat.rhsa:def:20190971: false
+Definition oval:com.redhat.rhsa:def:20190968: false
+Definition oval:com.redhat.rhsa:def:20190966: false
+Definition oval:com.redhat.rhea:def:20204505: false
+Definition oval:com.redhat.rhea:def:20200343: false
+Definition oval:com.redhat.rhea:def:20200330: false
+Definition oval:com.redhat.rhea:def:20194262: false
+Definition oval:com.redhat.rhea:def:20193845: false
+Definition oval:com.redhat.rhba:def:20210621: false
+Definition oval:com.redhat.rhba:def:20201628: false
+Definition oval:com.redhat.rhba:def:20201376: false
+Definition oval:com.redhat.rhba:def:20194268: false
+Definition oval:com.redhat.rhba:def:20193674: false
+Definition oval:com.redhat.rhba:def:20193621: false
+Definition oval:com.redhat.rhba:def:20193416: false
+Definition oval:com.redhat.rhba:def:20193408: false
+Definition oval:com.redhat.rhba:def:20193384: false
+Definition oval:com.redhat.rhba:def:20191992: false
+Evaluation done.
+
+TASK [ssato.openscap_vul_check : Fetch the report file] *******************************************************************************************************
+task path: /home/ssato/repos/public/github.com/ssato/ansible-role-openscap-vul-check.git/tasks/run.yml:21
+changed: [rhel-8-client-1] => {
+    "changed": true,
+    "checksum": "fc4fcd4bb4ed88516f43495b8a3315b04c6a3917",
+    "dest": "/tmp/rhel-8-client-1/tmp/openscap_sec_vul_result_for_rhel_8_report.html",
+    "md5sum": "7aa59aa332ce3aff25872081805be3bc",
+    "remote_checksum": "fc4fcd4bb4ed88516f43495b8a3315b04c6a3917",
+    "remote_md5sum": null
+}
+
+TASK [ssato.openscap_vul_check : Set markdown filepath] *******************************************************************************************************
+task path: /home/ssato/repos/public/github.com/ssato/ansible-role-openscap-vul-check.git/tasks/run.yml:27
+skipping: [rhel-8-client-1] => {
+    "changed": false,
+    "skip_reason": "Conditional result was False"
+}
+
+TASK [ssato.openscap_vul_check : Convert HTML report output to markdown file] *********************************************************************************
+task path: /home/ssato/repos/public/github.com/ssato/ansible-role-openscap-vul-check.git/tasks/run.yml:32
+skipping: [rhel-8-client-1] => {
+    "changed": false,
+    "skip_reason": "Conditional result was False"
+}
+
+TASK [ssato.openscap_vul_check : Fetch the report file (.md)] *************************************************************************************************
+task path: /home/ssato/repos/public/github.com/ssato/ansible-role-openscap-vul-check.git/tasks/run.yml:37
+skipping: [rhel-8-client-1] => {
+    "changed": false,
+    "skip_reason": "Conditional result was False"
+}
+
+TASK [ssato.openscap_vul_check : Run built-in tests] **********************************************************************************************************
+task path: /home/ssato/repos/public/github.com/ssato/ansible-role-openscap-vul-check.git/tasks/main.yml:17
+included: /home/ssato/repos/public/github.com/ssato/ansible-role-openscap-vul-check.git/tasks/test.yml for rhel-8-client-1
+
+TASK [ssato.openscap_vul_check : Test if the output report exists] ********************************************************************************************
+task path: /home/ssato/repos/public/github.com/ssato/ansible-role-openscap-vul-check.git/tasks/test.yml:2
+ok: [rhel-8-client-1] => {
+    "changed": false,
+    "cmd": [
+        "test",
+        "-f",
+        "/tmp/openscap_sec_vul_result_for_rhel_8_report.html"
+    ],
+    "delta": "0:00:00.003572",
+    "end": "2021-05-22 23:40:05.288151",
+    "rc": 0,
+    "start": "2021-05-22 23:40:05.284579"
+}
+META: ran handlers
+META: ran handlers
+
+PLAY RECAP ****************************************************************************************************************************************************
+rhel-8-client-1            : ok=16   changed=1    unreachable=0    failed=0    skipped=5    rescued=0    ignored=0
+
+ssato@x1-carbon-gen6%                                                                ~/repos/public/github.com/ssato/ansible-role-openscap-vul-check.git/tests
