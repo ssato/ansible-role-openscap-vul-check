@@ -6,8 +6,14 @@ sovc_verification_mode: false
 
 sovc_dist_ver: "{{ ansible_distribution_major_version }}"
 
+# true if you want to convert HTML outputs to markdown files using pandoc
+# Because pandoc is in EPEL repos, its repo needs to be enabled and pandoc will
+# be installed in advance.
+sovc_covnert_html_to_md: false
+
 # oscap package:
-sovc_scan_pkg: openscap-scanner
+sovc_scan_pkg:
+  - openscap-scanner
 
 # example.
 # sovc_scan_pkg: >-
@@ -17,6 +23,9 @@ sovc_scan_pkg: openscap-scanner
 sovc_security_reference_data_url: >-
   https://www.redhat.com/security/data/metrics/ds/v2/RHEL{{ sovc_dist_ver }}/rhel-{{ sovc_dist_ver }}.ds.xml.bz2
 
-sovc_security_reference_data_name: sec_ref_data.dat
+sovc_security_reference_data_name: /tmp/sec_ref_data.dat
+
+sovc_epel_repo_rpm: >-
+  https://dl.fedoraproject.org/pub/epel/epel-release-latest-{{ sovc_dist_ver }}.noarch.rpm
 
 # vim:sw=2:ts=2:et:
