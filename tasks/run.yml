@@ -1,0 +1,19 @@
+---
+- name: Check security reference data using the scanner
+  command: >-
+    oscap info {{ sovc_security_reference_data_name }}
+  changed_when: false
+  register: __result
+
+- name: Debug the output of the previous command
+  debug:
+    var: __result
+  when:
+    - sovc_debug
+
+- name: Do vulnerabilities checks using the scanner with ref. data
+  command: >-
+    oscap oval eval {{ sovc_security_reference_data_name }} 
+      --report {{ sovc_report_filepath }}
+
+# vim:sw=2:ts=2:et:

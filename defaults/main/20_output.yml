@@ -1,0 +1,9 @@
+---
+# .. note::
+#    The path should be writable and visible to other roles/playbooks/jobs, dir
+#    in the NFS mounted volumes for example if other ones want to process it.
+
+sovc_report_filepath: >-
+  /tmp/openscap_sec_vul_result_for_rhel_{{ sovc_dist_ver }}_report.html
+
+# vim:sw=2:ts=2:et:

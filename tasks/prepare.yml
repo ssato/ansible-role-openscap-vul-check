@@ -1,0 +1,24 @@
+---
+- name: Ensure package provides openscap scanner command is installed
+  package:
+    name: "{{ sovc_scan_pkg }}"
+    # .. note:: Avoid 'latest' because it may cause change.
+    state: present
+
+- name: Ensure the scanner command can run
+  command: >-
+    oscap -V
+  changed_when: false
+
+- name: Debug the output of the previous command
+  debug:
+    var: __result
+  when:
+      - sovc_debug
+
+- name: Fetch 
+  get_url:
+    url: "{{ sovc_security_reference_data_url }}"
+    dest: "{{ sovc_security_reference_data_name }}"
+
+# vim:sw=2:ts=2:et:

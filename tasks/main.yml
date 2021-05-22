@@ -1,0 +1,18 @@
+---
+- name: Run pre checks
+  include_tasks: pre_checks.yml
+
+- block:
+    - name: Ensure tools and data are ready and preparation has been done
+      include_tasks: "prepare.yml"
+    - name: Run vul checks
+      include_tasks: "run.yml"
+
+- block:
+    # .. todo::
+    # - name: Run dist-specific built-in tests
+    #   include_tasks: "test_{{ ansible_distribution | lower }}.yml"
+    - name: Run built-in tests
+      include_tasks: test.yml
+
+# vim:sw=2:ts=2:et:

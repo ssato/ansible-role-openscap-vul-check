@@ -1,0 +1,6 @@
+---
+- name: Test if the output report exists
+  command: >-
+    test -f {{ sovc_report_filepath }}
+
+# vim:sw=2:ts=2:et:

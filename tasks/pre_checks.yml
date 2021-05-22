@@ -1,0 +1,45 @@
+---
+- name: Test variables are OK
+  assert:
+    that:
+      # sovc_debug:
+      - sovc_debug is defined
+      - sovc_debug is in [true, false]
+      # sovc_dist_ver
+      - sovc_dist_ver is defined
+      - sovc_dist_ver is string
+      - sovc_dist_ver | bool
+      # sovc_scan_pkg
+      - sovc_scan_pkg is defined
+      - sovc_scan_pkg is string
+      - sovc_scan_pkg | bool
+      # sovc_security_reference_data_url
+      - sovc_security_reference_data_url is defined
+      - sovc_security_reference_data_url is string
+      - sovc_security_reference_data_url | bool
+      # sovc_security_reference_data_name
+      - sovc_security_reference_data_name is defined
+      - sovc_security_reference_data_name is string
+      - sovc_security_reference_data_name | bool
+      # .. todo: more strict checks
+      # - >-
+      #   sovc_security_reference_data_url |
+      #   regex_search("^(http.?|file):\/\/") |
+      #   bool
+    fail_msg: |
+      sovc_debug: {{ sovc_debug | d('undef') }}
+      sovc_dist_ver: {{ sovc_dist_ver | d('') }}
+      sovc_scan_pkg: {{ sovc_scan_pkg | d('') }}
+      sovc_security_reference_data_url:
+        {{ sovc_security_reference_data_url | d('') }}
+      sovc_security_reference_data_name:
+        {{ sovc_security_reference_data_name | d('') }}
+
+- name: Test if the OS running in the target is supported one
+  assert:
+    that:
+      - ansible_distribution in ['RedHat']
+    fail_msg: |
+      ansible_distribution: {{ ansible_distribution }}
+
+# vim:sw=2:ts=2:et:

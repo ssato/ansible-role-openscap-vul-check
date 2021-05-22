@@ -1,0 +1,34 @@
+---
+galaxy_info:
+  role_name: openscap-report
+  author: Satoru SATOH
+  description: |
+    Ansible Role to check vulnerabilities of target nodes using openscap with SCAP
+    content such like security data provided from
+    https://www.redhat.com/security/data/metrics/.
+  # company: Red Hat, Inc.
+
+  # yamllint disable-line rule:line-length
+  issue_tracker_url: https://github.com/ssato/ansible-role-openscap-report/issues
+  license: MIT
+
+  min_ansible_version: 2.9
+
+  platforms:
+    # - name: Fedora
+    #  versions:
+    #    - all
+
+    - name: EL
+      versions:
+        - 6
+        - 7
+        - 8
+
+  galaxy_tags:
+    - security
+    - el
+
+dependencies: []
+
+# vim:sw=2:ts=2:et:

@@ -1,0 +1,21 @@
+---
+# .. note:: sovc is an abbreviation of 'ssato.openscap-vul-check'
+
+sovc_debug: true
+
+sovc_dist_ver: "{{ ansible_distribution_major_version }}"
+
+# oscap package:
+sovc_scan_pkg: openscap-scanner
+
+# example.
+# sovc_scan_pkg: >-
+#   {{ 'openscap-scanner' if sovc_dist_ver in (6, 7, 8) else 'openscap' }}
+
+# yamllint disable rule:line-length
+sovc_security_reference_data_url: >-
+  https://www.redhat.com/security/data/metrics/ds/v2/RHEL{{ sovc_dist_ver }}/rhel-{{ sovc_dist_ver }}.ds.xml.bz2
+
+sovc_security_reference_data_name: sec_ref_data.dat
+
+# vim:sw=2:ts=2:et:
