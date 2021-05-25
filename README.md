@@ -19,7 +19,8 @@ see YAML files under defaults/.
 
 ## example playbook
 
-TBD
+- tests/converge.yml
+- example sssion log: logs/rhel-8-client-1.0.txt
 
 ## license
 
